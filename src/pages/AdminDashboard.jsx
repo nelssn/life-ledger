@@ -64,7 +64,7 @@ function AdminDashboard() {
             <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "#111827" }}>Total Users</h3>
             <span style={{ color: "#10b981", fontSize: "1.25rem" }}>👥</span>
           </div>
-          <p style={{ fontSize: "2rem", fontWeight: 700, margin: 0 }}>{loading ? "..." : totalUsers}</p>
+          <p className="stat-value" style={{ margin: 0 }}>{loading ? "..." : totalUsers}</p>
           <p style={{ fontSize: "0.85rem", color: "#6b7280" }}>All registered users</p>
         </div>
         <div className="card" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -72,7 +72,7 @@ function AdminDashboard() {
             <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "#111827" }}>Regular Users</h3>
             <span style={{ color: "#3b82f6", fontSize: "1.25rem" }}>👤</span>
           </div>
-          <p style={{ fontSize: "2rem", fontWeight: 700, margin: 0 }}>{loading ? "..." : regularUsers}</p>
+          <p className="stat-value" style={{ margin: 0 }}>{loading ? "..." : regularUsers}</p>
           <p style={{ fontSize: "0.85rem", color: "#6b7280" }}>Standard user accounts</p>
         </div>
         <div className="card" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -80,7 +80,7 @@ function AdminDashboard() {
             <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "#111827" }}>Administrators</h3>
             <span style={{ color: "#8b5cf6", fontSize: "1.25rem" }}>🛡️</span>
           </div>
-          <p style={{ fontSize: "2rem", fontWeight: 700, margin: 0 }}>{loading ? "..." : admins}</p>
+          <p className="stat-value" style={{ margin: 0 }}>{loading ? "..." : admins}</p>
           <p style={{ fontSize: "0.85rem", color: "#6b7280" }}>Admin accounts</p>
         </div>
       </div>

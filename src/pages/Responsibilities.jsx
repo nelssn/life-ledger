@@ -76,7 +76,7 @@ function Responsibilities() {
           <h1>Responsibilities</h1>
           <p className="subtitle">Manage your recurring responsibilities</p>
         </div>
-        <div style={{ display: "flex", gap: "0.75rem" }}>
+        <div className="resp-header-actions">
           <button
             className="btn-secondary"
             style={{ display: "flex", alignItems: "center", gap: "0.5rem", border: "1px solid var(--border-color)" }}
@@ -124,10 +124,7 @@ function Responsibilities() {
       )}
 
       {/* Category Tabs */}
-      <div style={{
-        display: "flex", gap: "0.25rem",
-        background: "#f0f2f5", borderRadius: "40px", padding: "4px", width: "fit-content"
-      }}>
+      <div className="resp-tabs">
         {CATEGORIES.map(cat => (
           <button
             key={cat}
@@ -176,7 +173,7 @@ function Responsibilities() {
                 boxShadow: isExpanded ? "0 4px 16px rgba(0,0,0,0.08)" : "none"
               }}>
                 {/* Main Row */}
-                <div style={{
+                <div className="resp-item-row" style={{
                   padding: "1rem", display: "flex", justifyContent: "space-between", alignItems: "center"
                 }}>
                   <div
@@ -200,7 +197,7 @@ function Responsibilities() {
                     </p>
                     {item.dueDate && <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", marginTop: "0.25rem", paddingLeft: "1.1rem" }}>Due: {item.dueDate}</p>}
                   </div>
-                  <div style={{ display: "flex", gap: "0.5rem", flexShrink: 0 }}>
+                  <div className="resp-actions">
                     <button className="btn-secondary" onClick={() => { setEditingItem(item); setIsModalOpen(true); }}>
                       {isOverdue ? "Reschedule" : "Edit"}
                     </button>
@@ -215,13 +212,10 @@ function Responsibilities() {
 
                 {/* Expandable Detail Panel */}
                 {isExpanded && (
-                  <div style={{
+                  <div className="resp-detail-grid" style={{
                     borderTop: "1px solid var(--border-color)",
                     padding: "1rem 1.25rem",
-                    background: "var(--bg-subtle, #f9fafb)",
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "0.75rem 2rem"
+                    background: "var(--bg-subtle, #f9fafb)"
                   }}>
                     <div>
                       <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.2rem" }}>Description</p>

@@ -42,7 +42,7 @@ function Register() {
       justifyContent: "center",
       fontFamily: "'Inter', system-ui, sans-serif"
     }}>
-      <div className="card" style={{ width: "100%", maxWidth: "420px", padding: "2.5rem" }}>
+      <div className="card auth-card" style={{ width: "100%", maxWidth: "420px", padding: "2.5rem" }}>
         <div style={{ marginBottom: "2rem" }}>
           <h1 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#1a73e8", marginBottom: "0.25rem" }}>LIFE Ledger</h1>
           <h2 style={{ fontSize: "1.25rem", fontWeight: 600, marginBottom: "0.25rem" }}>Create an Account</h2>

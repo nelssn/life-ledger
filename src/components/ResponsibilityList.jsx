@@ -129,9 +129,9 @@ function ResponsibilityList() {
 
       {/* 2. MIDDLE SECTION: Charts */}
       <section>
-        <div className="card" style={{ height: "350px", display: "flex", flexDirection: "column" }}>
-            <h3 style={{ fontSize: "1.05rem", fontWeight: 600, marginBottom: "0.25rem" }}>Responsibilities by Category</h3>
-            <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginBottom: "0.5rem" }}>Distribution of all your tasks</p>
+        <div className="card chart-card" style={{ height: "480px", display: "flex", flexDirection: "column" }}>
+            <h3 style={{ fontSize: "var(--fs-h3)", fontWeight: 600, marginBottom: "0.25rem" }}>Responsibilities by Category</h3>
+            <p style={{ color: "var(--text-muted)", fontSize: "var(--fs-small)", marginBottom: "0.5rem" }}>Distribution of all your tasks</p>
             <div style={{ flex: 1, minHeight: 0 }}>
               {chartData.length > 0 ? (
                 <ResponsiveContainer width="100%" height="100%">
@@ -141,18 +141,22 @@ function ResponsibilityList() {
                       dataKey="value"
                       nameKey="name"
                       cx="50%"
-                      cy="50%"
-                      outerRadius={100}
-                      innerRadius={60}
+                      cy="48%"
+                      outerRadius="65%"
+                      innerRadius="38%"
                       paddingAngle={5}
-                      label
+                      label={({ value }) => value}
                     >
                       {chartData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
                     <Tooltip />
-                    <Legend />
+                    <Legend
+                      verticalAlign="bottom"
+                      align="center"
+                      wrapperStyle={{ paddingTop: "16px", fontSize: "var(--fs-small)" }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               ) : (

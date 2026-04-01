@@ -61,7 +61,7 @@ function History() {
       </header>
 
       {/* Summary Cards */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+      <div className="history-summary-grid">
         {[
           { label: "Completed", count: completedCount, icon: "✓", iconColor: "var(--text-completed)", iconBg: "var(--bg-completed)" },
           { label: "Missed", count: missedCount, icon: "✕", iconColor: "var(--text-missed)", iconBg: "var(--bg-missed)" },
@@ -86,7 +86,7 @@ function History() {
       {/* Filters */}
       <div className="card">
         <h3 style={{ fontWeight: 600, marginBottom: "1rem" }}>Filters</h3>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem" }}>
+        <div className="history-filters-grid">
           <div>
             <label className="input-label" style={{ marginBottom: "0.4rem", display: "block" }}>Category</label>
             <select className="input-field" value={filterCategory} onChange={e => setFilterCategory(e.target.value)}>
@@ -124,10 +124,7 @@ function History() {
             {filtered.map(item => {
               const status = getStatusLabel(item);
               return (
-                <div key={item.id} style={{
-                  display: "flex", justifyContent: "space-between", alignItems: "center",
-                  padding: "0.875rem 1rem", border: "1px solid var(--border-color)", borderRadius: "8px"
-                }}>
+                <div key={item.id} className="history-activity-item">
                   <div>
                     <p style={{ fontWeight: 600 }}>{item.title}</p>
                     <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", marginTop: "0.2rem" }}>

@@ -50,6 +50,13 @@ function AddResponsibility({ onClose, initialData }) {
       };
 
       if (initialData?.id) {
+        // Detect rescheduling: task was overdue and due date changed to a future date
+        const wasOverdue = initialData.dueDate && new Date(initialData.dueDate) < new Date() && !initialData.completed;
+        const dueDateChanged = dueDate !== initialData.dueDate;
+        if (wasOverdue && dueDateChanged && new Date(dueDate) >= new Date(new Date().toDateString())) {
+          data.rescheduled = true;
+          data.rescheduledAt = new Date().toISOString();
+        }
         await updateDoc(doc(db, "responsibilities", initialData.id), data);
       } else {
         await addDoc(collection(db, "responsibilities"), {

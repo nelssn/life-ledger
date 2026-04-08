@@ -36,11 +36,11 @@ function ResponsibilityList() {
 
   // Aggregate stats
   const completedCount = responsibilities.filter(r => r.completed).length;
+  const rescheduledCount = responsibilities.filter(r => r.rescheduled && !r.completed).length;
   const missedCount = responsibilities.filter(r => {
-      if (!r.dueDate || r.completed) return false;
+      if (!r.dueDate || r.completed || r.rescheduled) return false;
       return new Date(r.dueDate) < new Date();
   }).length;
-  const rescheduledCount = 0; 
   
   // Calculate savings
   const totalSavings = responsibilities.reduce((acc, curr) => {

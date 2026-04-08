@@ -27,19 +27,22 @@ function History() {
   }, [user]);
 
   const completedCount = responsibilities.filter(r => r.completed).length;
+  const rescheduledCount = responsibilities.filter(r => r.rescheduled && !r.completed).length;
   const missedCount = responsibilities.filter(r => {
-    if (!r.dueDate || r.completed) return false;
+    if (!r.dueDate || r.completed || r.rescheduled) return false;
     return new Date(r.dueDate) < new Date();
   }).length;
-  const rescheduledCount = 0;
 
   // Apply filters
   const filtered = responsibilities.filter(r => {
     if (filterCategory !== "All" && r.category !== filterCategory) return false;
     if (filterStatus === "Completed" && !r.completed) return false;
     if (filterStatus === "Missed") {
-      const overdue = r.dueDate && new Date(r.dueDate) < new Date() && !r.completed;
+      const overdue = r.dueDate && new Date(r.dueDate) < new Date() && !r.completed && !r.rescheduled;
       if (!overdue) return false;
+    }
+    if (filterStatus === "Rescheduled") {
+      if (!r.rescheduled || r.completed) return false;
     }
     if (filterStartDate && r.dueDate && r.dueDate < filterStartDate) return false;
     if (filterEndDate && r.dueDate && r.dueDate > filterEndDate) return false;
@@ -48,6 +51,7 @@ function History() {
 
   const getStatusLabel = (r) => {
     if (r.completed) return { label: "Completed", color: "var(--text-completed)", bg: "var(--bg-completed)" };
+    if (r.rescheduled) return { label: "Rescheduled", color: "var(--text-rescheduled)", bg: "var(--bg-rescheduled)" };
     const overdue = r.dueDate && new Date(r.dueDate) < new Date();
     if (overdue) return { label: "Missed", color: "var(--text-missed)", bg: "var(--bg-missed)" };
     return { label: "Upcoming", color: "var(--text-rescheduled)", bg: "var(--bg-rescheduled)" };
